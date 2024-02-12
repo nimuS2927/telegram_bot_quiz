@@ -7,8 +7,10 @@ from aiogram import F
 
 from config import TOKEN
 
-from core.handlers.client import cmd_start, cmd_get_info_message, cmd_quiz
+from core.handlers.client import cmd_start, cmd_get_info_message, cmd_quiz, cmd_game, cmd_save_answer, cmd_end_game, \
+    choice_session
 from core.utils.commands import set_commands
+from core.utils.statesquiz import StepsQuiz
 
 from database.db_create import main_db_create
 
@@ -43,6 +45,10 @@ async def main():
     # Регистрация команд для бота
     dp.message.register(cmd_start, Command(commands=['start', 'run', 'старт']))
     dp.message.register(cmd_quiz, F.text == 'Начать игру')
+    dp.message.register(cmd_game, StepsQuiz.GET_QUESTION)
+    dp.message.register(cmd_save_answer, StepsQuiz.SAVE_ANSWER)
+    dp.message.register(cmd_end_game, StepsQuiz.END_GAME)
+    dp.message.register(choice_session, StepsQuiz.CHOICE_SESSION)
 
     # Сервесные команды на период разработки
     dp.message.register(cmd_get_info_message, F.text == 'info')

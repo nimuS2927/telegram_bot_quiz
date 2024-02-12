@@ -18,3 +18,6 @@ PATH_TO_LIBRARY = os.path.join(PROJECT_DIR, 'library')
 PATH_TO_DIR_FILES = os.path.join(PROJECT_DIR, 'library', 'files')
 PATH_TO_DIR_FIXTURES = os.path.join(PROJECT_DIR, 'library', 'fixtures')
 
+
+MAX_COUNT_QUESTIONS_IN_QUIZ = 10
+

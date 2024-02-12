@@ -7,7 +7,7 @@ from json import load
 from core.utils.excel_to_json import PATH_TO_FIXTURES
 
 from config import PATH_TO_DIR_DATABASE, PATH_TO_DATABASE
-from database.querysets import GET_ALL_QUESTIONS, CREATE_NEW_QUESTION
+from database.querysets import GET_ALL_QUESTIONS, INSERT_NEW_QUESTION
 
 PATH_TO_SCRIPTS = os.path.join(PATH_TO_DIR_DATABASE, 'queries_to_create_db.sql')
 
@@ -40,7 +40,7 @@ async def create_question(path_to_file: str, path_to_db: str, query_get: str, qu
 
 async def main_db_create():
     await create_table(PATH_TO_DATABASE, PATH_TO_SCRIPTS)
-    await create_question(PATH_TO_FIXTURES, PATH_TO_DATABASE, GET_ALL_QUESTIONS, CREATE_NEW_QUESTION)
+    await create_question(PATH_TO_FIXTURES, PATH_TO_DATABASE, GET_ALL_QUESTIONS, INSERT_NEW_QUESTION)
 
 
 if __name__ == '__main__':

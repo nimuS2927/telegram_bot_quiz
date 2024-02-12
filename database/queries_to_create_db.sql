@@ -3,16 +3,15 @@ PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS `users` (
     telegram_id INTEGER PRIMARY KEY,
     first_name VARCHAR(255),
-    last_name VARCHAR(255),
-    last_session_id INTEGER
+    last_name VARCHAR(255)
 );
 
 CREATE TABLE IF NOT EXISTS `sessions` (
     session_id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
-    time_last_answer VARCHAR(30) NOT NULL,
+    time_last_answer VARCHAR(30) DEFAULT NULL,
     count_answer INTEGER DEFAULT 0,
-    status INTEGER NOT NULL,
+    status INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES `users` (telegram_id) ON DELETE CASCADE
 );
 
